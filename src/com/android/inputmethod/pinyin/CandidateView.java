@@ -33,6 +33,7 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import java.lang.Math;
 
 /**
  * View to show candidate list. There two candidate view instances which are
@@ -264,7 +265,7 @@ public class CandidateView extends View {
                 widthMeasureSpec), getDefaultSize(getSuggestedMinimumHeight(),
                 heightMeasureSpec));
 
-        if (mOldWidth != getMeasuredWidth() || mOldHeight != getMeasuredHeight()) {
+        if (Math.abs(mOldWidth - getMeasuredWidth()) > 2 || Math.abs(mOldHeight - getMeasuredHeight()) > 2) {
             onSizeChanged();
         }
     }
